@@ -76,6 +76,11 @@
 				dragIndex = slice(dragEl.parentNode.children).indexOf(dragEl);
 
 				if (type === 'swap') {
+					// Place item at the right place where we drag to the bottom
+					if (dragIndex > slice(this.parentNode.children).indexOf(this)) {
+						dragIndex = dragIndex + 1;
+					}
+					
 					dropParent.insertBefore(dragEl, this);
 					if (dragIndex === 0 && !dropParent.children[0]) {
 						dropParent.appendChild(this);
